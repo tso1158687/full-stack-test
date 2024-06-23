@@ -1,0 +1,20 @@
+services:
+  web:
+    build: /frontend
+    depends_on:
+      - api
+    ports:
+      - "4200:4200"
+  api:
+    build: /backend
+    ports:
+      - "3000:3000"
+  db:
+    image: mongo
+    volumes:
+      - database:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  database:
